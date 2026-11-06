@@ -1,0 +1,6 @@
+*.stl binary
+*.f3d binary
+*.step -diff
+*.gif binary
+*.png binary
+*.npz binary
