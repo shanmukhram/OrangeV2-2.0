@@ -1,5 +1,10 @@
+import os
+try:  # repo root, found from this file's location
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
+except NameError:  # exec'd inside Fusion: set ORANGE_ROOT to the repo folder
+    ROOT = os.environ.get('ORANGE_ROOT', os.getcwd())
 import trimesh, numpy as np, sys
-S="C:/Users/admin/Desktop/HEXA-Orange/"
+S=os.path.join(ROOT, '')
 LL=trimesh.load('LL2_aligned.stl')
 L3=trimesh.load(S+"hexa-orange stl/L3-v117 (1).stl"); L3=max(L3.split(only_watertight=False),key=lambda p:p.volume)
 def box(x0,x1,y0,y1,z0,z1):

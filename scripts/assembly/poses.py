@@ -5,9 +5,14 @@ pocket goes toward -x) sits on the BODY hip servo; the LABELLED plate pocket (ax
 z -23.02, mouth y=34.28, pocket goes toward +y) takes the LOWER-LEG servo.  (User, 2026-11-06.)
 L2-shaped parts are the same with z -> -z.
 """
+import os
+try:  # repo root, found from this file's location
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+except NameError:  # exec'd inside Fusion: set ORANGE_ROOT to the repo folder
+    ROOT = os.environ.get('ORANGE_ROOT', os.getcwd())
 import numpy as np, json, trimesh, sys
-SP = r'C:/Users/admin/Desktop/HEXA-Orange/scripts/assembly'
-OUT = r'C:/Users/admin/Desktop/HEXA-Orange/output/v2'
+SP = os.path.join(ROOT, 'scripts/assembly')
+OUT = os.path.join(ROOT, 'output')
 
 DECK = 21.97                 # bracket post tops (servo tabs rest here)
 TAB_BOT_BELOW_TOP = 8.26     # servo top face -> tab underside

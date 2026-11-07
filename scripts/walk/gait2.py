@@ -5,8 +5,13 @@ Same Stand / Rest servo angles as Sesame. Same angle mapping as gait.py (hip 90 
 Walk direction: +X (display end). Hips swing +-HIP_AMP deg around the 45 deg Stand splay, so no hip ever turns toward the
 body middle (shell clearance), knees lift KNEE_LIFT deg outward in a smooth arc.
 """
+import os
+try:  # repo root, found from this file's location
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+except NameError:  # exec'd inside Fusion: set ORANGE_ROOT to the repo folder
+    ROOT = os.environ.get('ORANGE_ROOT', os.getcwd())
 import numpy as np, sys
-SP = r'C:/Users/admin/Desktop/HEXA-Orange/scripts/walk'
+SP = os.path.join(ROOT, 'scripts/walk')
 src = open(SP + '/gait.py').read()
 head, tail = src.split('# --- Sesame keyframes')[0], 'def inter_vol' + src.split('def inter_vol', 1)[1]
 geometry = '# --- geometry ---' + src.split('# --- geometry ---', 1)[1].split('\nframes = []', 1)[0]

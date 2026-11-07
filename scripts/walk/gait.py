@@ -4,9 +4,14 @@ Angle mapping (assumption, confirm with the user):
   hips  : servo 90 = leg straight out sideways; +1 deg servo = +1 deg CCW seen from above (Stand splays legs to the corners)
   knees : Stand value (R4/L3 = 0, R3/L4 = 180) = lower leg straight down; 90 = lower leg horizontal (Rest pose)
 """
+import os
+try:  # repo root, found from this file's location
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+except NameError:  # exec'd inside Fusion: set ORANGE_ROOT to the repo folder
+    ROOT = os.environ.get('ORANGE_ROOT', os.getcwd())
 import numpy as np, json, trimesh, sys, itertools
-SP = r'C:/Users/admin/Desktop/HEXA-Orange/scripts/walk'
-ASM = r'C:/Users/admin/Desktop/HEXA-Orange/scripts/assembly'
+SP = os.path.join(ROOT, 'scripts/walk')
+ASM = os.path.join(ROOT, 'scripts/assembly')
 A = ASM + '/asm/'
 SUB = int(sys.argv[1]) if len(sys.argv) > 1 else 5      # interpolation steps per keyframe move
 

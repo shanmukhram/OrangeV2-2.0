@@ -1,7 +1,12 @@
+import os
+try:  # repo root, found from this file's location
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+except NameError:  # exec'd inside Fusion: set ORANGE_ROOT to the repo folder
+    ROOT = os.environ.get('ORANGE_ROOT', os.getcwd())
 import adsk.core, adsk.fusion, json
 
-SP = r'C:/Users/admin/Desktop/HEXA-Orange/scripts/assembly'
-V2 = r'C:/Users/admin/Desktop/HEXA-Orange/output/v2'
+SP = os.path.join(ROOT, 'scripts/assembly')
+V2 = os.path.join(ROOT, 'output')
 UP = V2 + '/Orange_UpperLeg_Bone_v2/Orange_UpperLeg_Bone_MultiHole/Orange_UpperLeg_Bone_MultiHole_v2_%s.step'
 LOW = V2 + '/Orange_LowerLeg_v2_%s.step'
 P3 = adsk.core.Point3D.create

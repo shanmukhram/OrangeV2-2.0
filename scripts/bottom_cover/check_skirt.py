@@ -1,6 +1,11 @@
+import os
+try:  # repo root, found from this file's location
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+except NameError:  # exec'd inside Fusion: set ORANGE_ROOT to the repo folder
+    ROOT = os.environ.get('ORANGE_ROOT', os.getcwd())
 import trimesh, numpy as np, json, manifold3d as m3
 # Gap checks for the skirt cover (base frame, mm). Needs: pip install numpy trimesh manifold3d
-R = 'C:/Users/admin/Desktop/HEXA-Orange/'
+R = os.path.join(ROOT, '')
 ASM = R + 'scripts/assembly/asm/'
 info=json.load(open(ASM + 'info.json'))
 def L(p,key=None):

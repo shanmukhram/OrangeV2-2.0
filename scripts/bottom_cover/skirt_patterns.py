@@ -1,12 +1,17 @@
 """Skirt face pattern variants for the skirt cover (Fusion, exec into the concept design).
 Skirt faces: y = 23.92 (R) and y = -28.68 (L); usable x -7..58.4, z -6.6..6.07. Coordinates in mm."""
+import os
+try:  # repo root, found from this file's location
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+except NameError:  # exec'd inside Fusion: set ORANGE_ROOT to the repo folder
+    ROOT = os.environ.get('ORANGE_ROOT', os.getcwd())
 import adsk.core, adsk.fusion, math
 
 P = adsk.core.Point3D.create
 VI = adsk.core.ValueInput
 FO = adsk.fusion.FeatureOperations
 FACES = (23.92, -28.68)
-SP = r'C:/Users/admin/Desktop/HEXA-Orange/scripts/bottom_cover'   # side_shot() saves its PNGs here
+SP = os.path.join(ROOT, 'scripts/bottom_cover')   # side_shot() saves its PNGs here
 
 
 def chamf_rect(x0, x1, z0, z1, c, corners='abcd'):

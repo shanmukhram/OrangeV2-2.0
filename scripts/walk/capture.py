@@ -1,6 +1,11 @@
+import os
+try:  # repo root, found from this file's location
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+except NameError:  # exec'd inside Fusion: set ORANGE_ROOT to the repo folder
+    ROOT = os.environ.get('ORANGE_ROOT', os.getcwd())
 import adsk.core, adsk.fusion, json, os
 
-SP = r'C:/Users/admin/Desktop/HEXA-Orange/scripts/walk'
+SP = os.path.join(ROOT, 'scripts/walk')
 
 
 def mat(T):
@@ -19,7 +24,7 @@ def capture(start, end, outdir, keep_camera=False):
     root = design.rootComponent
     assert root.occurrences.itemByName('Base_wide:1') is not None
     G = json.load(open(SP + '/gait_frames.json'))
-    info = json.load(open(r'C:/Users/admin/Desktop/HEXA-Orange/scripts/assembly/asm/info.json'))
+    info = json.load(open(os.path.join(ROOT, 'scripts/assembly/asm/info.json')))
     occ = {}; T0 = {}
     for leg, nm in G['names'].items():
         for part, on in nm.items():

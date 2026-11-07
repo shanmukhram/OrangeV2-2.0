@@ -1,8 +1,13 @@
+import os
+try:  # repo root, found from this file's location
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+except NameError:  # exec'd inside Fusion: set ORANGE_ROOT to the repo folder
+    ROOT = os.environ.get('ORANGE_ROOT', os.getcwd())
 import trimesh, numpy as np, glob, os, sys, json, subprocess
 from PIL import Image, ImageDraw
-OLD = r'C:/Users/admin/Desktop/HEXA-Orange/scripts/upper_leg/checks'
-SP = r'C:/Users/admin/Desktop/HEXA-Orange/scripts/upper_leg'
-OUT = r'C:/Users/admin/Desktop/HEXA-Orange/output/v2'
+OLD = os.path.join(ROOT, 'scripts/upper_leg/checks')
+SP = os.path.join(ROOT, 'scripts/upper_leg')
+OUT = os.path.join(ROOT, 'output')
 sys.path.insert(0, OLD)
 os.chdir(OLD)
 from dmap import depthmap, MAPS

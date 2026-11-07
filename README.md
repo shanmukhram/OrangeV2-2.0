@@ -307,3 +307,20 @@ General: PLA or PETG, 0.2 mm layers, **4 walls**, 25–30 % infill. 4 walls matt
   - buck capacitors: Ø8 × 10.5.
 
 If anything is off by more than about 1 mm, the posts and shelf are quick to adjust in the Fusion designs.
+
+---
+
+## Running the scripts
+
+The scripts find files relative to the repository root, so they work wherever you clone it. If you run one inside Fusion (where `__file__` isn't defined), set the environment variable `ORANGE_ROOT` to the repository folder first.
+
+They were written for the original working folder:
+- Exports go to an `output/` folder at the repository root.
+- A few checks also read the original Orange STLs from a `hexa-orange stl/` folder, which isn't included in this repository.
+
+## License
+
+- **Designs** (`fusion/`, `stl/`, `media/`, docs): [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+- **Scripts** (`scripts/`): [MIT](https://opensource.org/licenses/MIT).
+
+See [LICENSE.md](LICENSE.md) for details.
